@@ -287,17 +287,17 @@ nav{
   padding:4rem;color:var(--muted);font-size:0.95rem;
 }
 
-/* ── COMPARISON (WHY US) ── */
+/* ── WHY US ── */
 .compare-section{background:var(--paper);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.compare-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:16px;overflow:hidden;border:1px solid var(--border)}
-.compare-table th{padding:1rem 1.5rem;font-size:0.82rem;font-weight:600;background:var(--white);color:var(--muted);text-align:left;border-bottom:1px solid var(--border)}
-.compare-table th.us{background:var(--indigo);color:white}
-.compare-table td{padding:1rem 1.5rem;font-size:0.9rem;border-bottom:1px solid var(--border);background:var(--white);vertical-align:middle}
-.compare-table td.us{background:var(--indigo-xlight);color:var(--indigo);font-weight:600}
-.compare-table tr:last-child td{border-bottom:none}
-.compare-table td.feat{font-weight:500;color:var(--ink)}
-.check{color:var(--verified);font-size:1.1rem}
-.cross{color:#ef4444;font-size:1.1rem}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.why-card{
+  background:var(--white);border:1px solid var(--border);border-radius:16px;
+  padding:2rem;transition:box-shadow 0.2s,transform 0.2s;
+}
+.why-card:hover{box-shadow:0 12px 40px rgba(55,48,163,0.1);transform:translateY(-3px)}
+.why-icon{font-size:2rem;display:block;margin-bottom:1rem}
+.why-card h3{font-family:'DM Serif Display',serif;font-size:1.3rem;letter-spacing:-0.01em;margin-bottom:0.6rem;color:var(--ink)}
+.why-card p{font-size:0.9rem;color:var(--muted);line-height:1.7}
 
 /* ── HOW IT WORKS ── */
 .steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:2rem;counter-reset:step}
@@ -461,12 +461,12 @@ footer{
 <body>
 
 <!-- NAV -->
-<nav>
-  <a class="nav-logo" href="#">Ustazium</a>
+<nav id="top">
+  <a class="nav-logo" href="#top">Ustazium</a>
   <div class="nav-links">
     <a href="#catalog">Репетиторы</a>
     <a href="#how">Как работает</a>
-    <a href="#why">Vs Buki</a>
+    <a href="#why">Почему Ustazium</a>
     <a href="#request">Найти репетитора</a>
     <a href="#" class="nav-cta" onclick="openModal();return false">Я репетитор</a>
   </div>
@@ -478,7 +478,7 @@ footer{
     <div>
       <div class="hero-eyebrow">🇰🇿 Только Казахстан · Только верифицированные</div>
       <h1>Репетиторы с <em>проверенными</em> дипломами</h1>
-      <p class="hero-sub">Маркетплейс верифицированных репетиторов для подготовки к ЕНТ, IELTS и школьной программе. Дипломы проверены по реестру МОН РК. Оплата через Kaspi Pay — деньги у репетитора только после урока.</p>
+      <p class="hero-sub">Маркетплейс верифицированных репетиторов для подготовки к ЕНТ, IELTS и школьной программе. Дипломы проверены по реестру МОН РК. Оплата проходит через платформу — безопасно для студента и репетитора.</p>
       <div class="hero-btns">
         <a href="#catalog" class="btn-primary">Найти репетитора</a>
         <a href="#" class="btn-ghost" onclick="openModal();return false">Стать репетитором</a>
@@ -495,7 +495,7 @@ footer{
         </div>
         <div class="hcard-badge">✓ Диплом верифицирован</div>
         <div class="hcard-footer">
-          <div class="hcard-price">3 500 ₸<span style="font-size:0.72rem;font-weight:400;color:var(--muted)"> / урок</span></div>
+          <div class="hcard-price">6 000 ₸<span style="font-size:0.72rem;font-weight:400;color:var(--muted)"> / урок</span></div>
           <div class="hcard-rating">★★★★★ 4.9</div>
         </div>
       </div>
@@ -506,7 +506,7 @@ footer{
         </div>
         <div class="hcard-badge">✓ Диплом верифицирован</div>
         <div class="hcard-footer">
-          <div class="hcard-price">4 000 ₸<span style="font-size:0.72rem;font-weight:400;color:var(--muted)"> / урок</span></div>
+          <div class="hcard-price">8 000 ₸<span style="font-size:0.72rem;font-weight:400;color:var(--muted)"> / урок</span></div>
           <div class="hcard-rating">★★★★★ 5.0</div>
         </div>
       </div>
@@ -517,7 +517,7 @@ footer{
         </div>
         <div class="hcard-badge">✓ Диплом верифицирован</div>
         <div class="hcard-footer">
-          <div class="hcard-price">2 800 ₸<span style="font-size:0.72rem;font-weight:400;color:var(--muted)"> / урок</span></div>
+          <div class="hcard-price">5 000 ₸<span style="font-size:0.72rem;font-weight:400;color:var(--muted)"> / урок</span></div>
           <div class="hcard-rating">★★★★☆ 4.8</div>
         </div>
       </div>
@@ -560,7 +560,7 @@ footer{
       </select>
       <select class="search-select" id="sCity">
         <option value="">Все города</option>
-        <option>Алматы</option><option>Астана</option>
+        <option>Алматы</option><option>Астана</option><option>Онлайн</option>
       </select>
       <button class="search-btn" onclick="filterTutors()">Найти</button>
     </div>
@@ -590,8 +590,8 @@ footer{
       </div>
       <div class="step">
         <span class="step-icon">💳</span>
-        <div class="step-title">Оплатите через Kaspi Pay</div>
-        <p class="step-desc">Деньги хранятся на платформе и переводятся репетитору только после завершения урока. Никакого риска.</p>
+        <div class="step-title">Оплатите урок безопасно</div>
+        <p class="step-desc">Оплата проходит через платформу. На старте — через Kaspi с подтверждением, дальше подключаем защищённую онлайн-оплату.</p>
       </div>
       <div class="step">
         <span class="step-icon">⭐</span>
@@ -602,61 +602,28 @@ footer{
   </div>
 </div>
 
-<!-- WHY US / COMPARISON -->
+<!-- WHY US -->
 <div class="compare-section" id="why">
   <div class="section">
-    <div class="eyebrow">Сравнение</div>
-    <h2 class="section-title">Ustazium vs Buki vs Preply</h2>
-    <p class="section-sub">Почему мы — лучший выбор для Казахстана</p>
-    <div style="overflow-x:auto">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th>Параметр</th>
-            <th class="us">Ustazium 🇰🇿</th>
-            <th>Buki</th>
-            <th>Preply</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="feat">Верификация диплома</td>
-            <td class="us">✅ По реестру МОН РК</td>
-            <td><span class="cross">✗</span> Нет</td>
-            <td><span class="cross">✗</span> Нет</td>
-          </tr>
-          <tr>
-            <td class="feat">Комиссия с репетитора</td>
-            <td class="us">✅ 10–15% с урока</td>
-            <td><span class="cross">✗</span> 50–100% первого ученика</td>
-            <td><span class="cross">✗</span> 100% первого урока + 18–33%</td>
-          </tr>
-          <tr>
-            <td class="feat">Защита оплаты (эскроу)</td>
-            <td class="us">✅ Kaspi Pay</td>
-            <td><span class="cross">✗</span> Оплата напрямую</td>
-            <td><span class="check">✓</span> Есть</td>
-          </tr>
-          <tr>
-            <td class="feat">Фокус на ЕНТ / КЗ программу</td>
-            <td class="us">✅ Казахстан — приоритет</td>
-            <td><span class="cross">✗</span> 8 стран, КЗ не приоритет</td>
-            <td><span class="cross">✗</span> Глобальный, 95% — языки</td>
-          </tr>
-          <tr>
-            <td class="feat">Казахский язык интерфейса</td>
-            <td class="us">✅ Есть</td>
-            <td><span class="cross">✗</span> Нет</td>
-            <td><span class="cross">✗</span> Нет</td>
-          </tr>
-          <tr>
-            <td class="feat">Отзывы только за оплату</td>
-            <td class="us">✅ Честные отзывы</td>
-            <td><span class="cross">✗</span> Любые отзывы</td>
-            <td><span class="check">✓</span> Есть</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="eyebrow">Почему Ustazium</div>
+    <h2 class="section-title">Сделано для Казахстана</h2>
+    <p class="section-sub">Три принципа, на которых держится платформа</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">🎓</span>
+        <h3>Верификация дипломов</h3>
+        <p>Каждый репетитор проходит проверку диплома по реестру МОН РК. Вы видите только подтверждённых преподавателей — без фейковых анкет.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">💸</span>
+        <h3>Честная комиссия 10–15%</h3>
+        <p>Репетитор оставляет почти весь заработок себе. Комиссия берётся только с проведённых уроков — без платы за регистрацию и скрытых сборов.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🇰🇿</span>
+        <h3>Фокус на ЕНТ и IELTS</h3>
+        <p>Мы заточены под казахстанскую программу: ЕНТ, IELTS, казахский язык и школьные предметы. Не «ещё одна страна» в глобальном каталоге.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -670,15 +637,15 @@ footer{
     <form class="req-form" id="reqForm" onsubmit="submitReq(event)">
       <div class="fg">
         <label>Ваше имя</label>
-        <input class="finput" type="text" placeholder="Алина" required>
+        <input class="finput" id="rName" type="text" placeholder="Алина" required>
       </div>
       <div class="fg">
         <label>Номер WhatsApp</label>
-        <input class="finput" type="tel" placeholder="+7 777 123 45 67" required>
+        <input class="finput" id="rWa" type="tel" placeholder="+7 777 123 45 67" required>
       </div>
       <div class="fg">
         <label>Предмет</label>
-        <select class="fselect" required>
+        <select class="fselect" id="rSubject" required>
           <option value="">Выберите...</option>
           <option>ЕНТ (комплексная подготовка)</option>
           <option>IELTS</option>
@@ -693,17 +660,17 @@ footer{
       </div>
       <div class="fg">
         <label>Город</label>
-        <select class="fselect" required>
+        <select class="fselect" id="rCity" required>
           <option value="">Выберите...</option>
           <option>Алматы</option><option>Астана</option><option>Другой город</option>
         </select>
       </div>
       <div class="fg full">
         <label>Что нужно? (необязательно)</label>
-        <textarea class="ftextarea" placeholder="Например: подготовка к ЕНТ, цель 100+ баллов, онлайн 2 раза в неделю..."></textarea>
+        <textarea class="ftextarea" id="rNote" placeholder="Например: подготовка к ЕНТ, цель 100+ баллов, онлайн 2 раза в неделю..."></textarea>
       </div>
-      <button class="fsubmit" type="submit">Отправить заявку → получить подборку в WhatsApp</button>
-      <div class="fsuccess" id="fsuccess">✅ Заявка принята! Напишем в WhatsApp в течение нескольких часов.</div>
+      <button class="fsubmit" type="submit">Отправить заявку в WhatsApp</button>
+      <div class="fsuccess" id="fsuccess">✅ Открываем WhatsApp с вашей заявкой — нажмите «Отправить» в чате.</div>
     </form>
   </div>
 </div>
@@ -713,7 +680,7 @@ footer{
   <div class="tutor-cta-inner">
     <div>
       <h2>Вы репетитор? Присоединяйтесь бесплатно</h2>
-      <p>Регистрация бесплатна. Комиссия 10–15% только с проведённых уроков. Без скрытых платежей — в отличие от Buki, где берут целую неделю дохода.</p>
+      <p>Регистрация бесплатна. Комиссия 10–15% только с проведённых уроков — без платы за регистрацию и скрытых сборов.</p>
       <div class="perks">
         <div class="perk">Бесплатная регистрация</div>
         <div class="perk">Комиссия 10–15%</div>
@@ -727,11 +694,11 @@ footer{
 
 <!-- FOOTER -->
 <footer>
-  <a class="footer-logo" href="#">Ustazium</a>
-  <span class="footer-text">© 2025 Ustazium — Верифицированные репетиторы Казахстана</span>
+  <a class="footer-logo" href="#top">Ustazium</a>
+  <span class="footer-text">© 2026 Ustazium — Верифицированные репетиторы Казахстана</span>
   <div class="footer-links">
     <a href="mailto:hello@ustazium.kz">hello@ustazium.kz</a>
-    <a href="#">Instagram</a>
+    <a href="#" id="igLink" target="_blank" rel="noopener">Instagram</a>
   </div>
 </footer>
 
@@ -746,25 +713,25 @@ footer{
         <div class="mrow">
           <div>
             <label class="mlabel">Имя и фамилия</label>
-            <input class="minput" type="text" placeholder="Айгерим Махамбет" required>
+            <input class="minput" id="tName" type="text" placeholder="Айгерим Махамбет" required>
           </div>
           <div>
             <label class="mlabel">Номер WhatsApp</label>
-            <input class="minput" type="tel" placeholder="+7 777 ..." required>
+            <input class="minput" id="tWa" type="tel" placeholder="+7 777 ..." required>
           </div>
         </div>
         <div>
           <label class="mlabel">Предметы (что преподаёте)</label>
-          <input class="minput" type="text" placeholder="Математика, ЕНТ" required>
+          <input class="minput" id="tSubj" type="text" placeholder="Математика, ЕНТ" required>
         </div>
         <div class="mrow">
           <div>
             <label class="mlabel">Цена за урок (60 мин)</label>
-            <input class="minput" type="text" placeholder="3 500 ₸" required>
+            <input class="minput" id="tPrice" type="text" placeholder="6 000 ₸" required>
           </div>
           <div>
             <label class="mlabel">Город</label>
-            <select class="mselect" required>
+            <select class="mselect" id="tCity" required>
               <option value="">Выберите...</option>
               <option>Алматы</option><option>Астана</option><option>Онлайн</option>
             </select>
@@ -772,13 +739,13 @@ footer{
         </div>
         <div>
           <label class="mlabel">ВУЗ и специальность (из диплома)</label>
-          <input class="minput" type="text" placeholder="КазНУ, Математика" required>
+          <input class="minput" id="tUni" type="text" placeholder="КазНУ, Математика" required>
         </div>
         <div>
           <label class="mlabel">О себе (кратко)</label>
-          <textarea class="mtextarea" placeholder="Опыт, достижения учеников, подход к обучению..."></textarea>
+          <textarea class="mtextarea" id="tAbout" placeholder="Опыт, достижения учеников, подход к обучению..."></textarea>
         </div>
-        <button class="msubmit" type="submit">Отправить заявку на регистрацию</button>
+        <button class="msubmit" type="submit">Отправить заявку в WhatsApp</button>
       </form>
     </div>
     <div class="modal-success" id="mSuccess">
@@ -790,13 +757,19 @@ footer{
 </div>
 
 <script>
+// ─────────────────────────────────────────────
+// НАСТРОЙКИ — замени на свои реальные контакты
+const PLATFORM_WA = "77000000000";        // твой номер WhatsApp (без +), куда приходят заявки
+const INSTAGRAM_URL = "https://instagram.com/ustazium"; // ссылка на Instagram
+// ─────────────────────────────────────────────
+
 const TUTORS=[
-  {name:"Айгерим Махамбет",ava:"👩‍🏫",subject:"Математика · ЕНТ",tags:["ЕНТ","Математика"],city:"Алматы",price:"3 500 ₸",rating:"4.9",reviews:28,desc:"7 лет подготовки к ЕНТ. Мои студенты в среднем набирают 95+ баллов. Работаю по авторским конспектам.",wa:"77001111111"},
-  {name:"Данияр Кенесов",ava:"👨‍🏫",subject:"Английский · IELTS",tags:["IELTS","Английский"],city:"Алматы",price:"4 000 ₸",rating:"5.0",reviews:41,desc:"IELTS 8.0. Помог 60+ студентам получить нужный балл для поступления за рубеж. Онлайн и офлайн.",wa:"77002222222"},
-  {name:"Сания Рахимова",ava:"👩‍💻",subject:"Химия · Биология",tags:["ЕНТ","Химия","Биология"],city:"Астана",price:"2 800 ₸",rating:"4.8",reviews:15,desc:"Преподаватель КазНМУ. Подготовка к ЕНТ по химии и биологии. Знаю все типовые задания.",wa:"77003333333"},
-  {name:"Бауыржан Сатыбалды",ava:"🧑‍🏫",subject:"История Казахстана",tags:["ЕНТ","История"],city:"Алматы",price:"2 500 ₸",rating:"4.7",reviews:22,desc:"Кандидат исторических наук. ЕНТ по истории и грамотности. 100% поступаемость у студентов.",wa:"77004444444"},
-  {name:"Алина Воробьёва",ava:"👩‍🎓",subject:"Математика · Физика",tags:["Математика","Физика"],city:"Астана",price:"3 200 ₸",rating:"4.9",reviews:33,desc:"Олимпиадная математика и физика. Работаю с 8–11 классами. Онлайн занятия, гибкий график.",wa:"77005555555"},
-  {name:"Нурлан Ахметов",ava:"👨‍💼",subject:"Казахский язык",tags:["Казахский","ЕНТ"],city:"Алматы",price:"2 000 ₸",rating:"4.6",reviews:18,desc:"Помогаю русскоязычным школьникам подготовиться к ЕНТ по казахскому языку. Терпеливый подход.",wa:"77006666666"},
+  {name:"Айгерим Махамбет",ava:"👩‍🏫",subject:"Математика · ЕНТ",tags:["ЕНТ","Математика"],city:"Алматы",price:"6 000 ₸",rating:"4.9",reviews:28,desc:"7 лет подготовки к ЕНТ. Мои студенты в среднем набирают 95+ баллов. Работаю по авторским конспектам.",wa:"77001111111"},
+  {name:"Данияр Кенесов",ava:"👨‍🏫",subject:"Английский · IELTS",tags:["IELTS","Английский"],city:"Алматы",price:"8 000 ₸",rating:"5.0",reviews:41,desc:"IELTS 8.0. Помог 60+ студентам получить нужный балл для поступления за рубеж. Онлайн и офлайн.",wa:"77002222222"},
+  {name:"Сания Рахимова",ava:"👩‍💻",subject:"Химия · Биология",tags:["ЕНТ","Химия","Биология"],city:"Астана",price:"5 000 ₸",rating:"4.8",reviews:15,desc:"Преподаватель КазНМУ. Подготовка к ЕНТ по химии и биологии. Знаю все типовые задания.",wa:"77003333333"},
+  {name:"Бауыржан Сатыбалды",ava:"🧑‍🏫",subject:"История Казахстана",tags:["ЕНТ","История"],city:"Алматы",price:"4 500 ₸",rating:"4.7",reviews:22,desc:"Кандидат исторических наук. ЕНТ по истории и грамотности. 100% поступаемость у студентов.",wa:"77004444444"},
+  {name:"Алина Воробьёва",ava:"👩‍🎓",subject:"Математика · Физика",tags:["Математика","Физика"],city:"Астана",price:"5 500 ₸",rating:"4.9",reviews:33,desc:"Олимпиадная математика и физика. Работаю с 8–11 классами. Онлайн занятия, гибкий график.",wa:"77005555555"},
+  {name:"Нурлан Ахметов",ava:"👨‍💼",subject:"Казахский язык",tags:["Казахский","ЕНТ"],city:"Алматы",price:"4 000 ₸",rating:"4.6",reviews:18,desc:"Помогаю русскоязычным школьникам подготовиться к ЕНТ по казахскому языку. Терпеливый подход.",wa:"77006666666"},
 ];
 
 const WA_SVG=`<svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
@@ -825,7 +798,7 @@ function renderTutors(list){
           <div class="card-price">${t.price}</div>
           <div class="card-price-label">за 60 минут</div>
         </div>
-        <a class="wa-btn" href="https://wa.me/${t.wa}" target="_blank">${WA_SVG} WhatsApp</a>
+        <a class="wa-btn" href="https://wa.me/${t.wa}?text=${encodeURIComponent('Здравствуйте! Нашёл вас на Ustazium. Хотел бы узнать про занятия по предмету: '+t.subject)}" target="_blank">${WA_SVG} WhatsApp</a>
       </div>
     </div>
   `).join('');
@@ -850,12 +823,17 @@ document.getElementById('sInput').addEventListener('keyup',e=>{if(e.key==='Enter
   let n=0;const go=()=>{n=Math.min(n+1,target);el.textContent=n;if(n<target)setTimeout(go,90)};go();
 })();
 
-// forms
+// forms — открывают WhatsApp с готовым текстом заявки (работает без бэкенда)
 function submitReq(e){
   e.preventDefault();
-  const btn=document.getElementById('reqForm').querySelector('.fsubmit');
-  btn.textContent='Отправляем...';btn.disabled=true;
-  setTimeout(()=>{btn.style.display='none';document.getElementById('fsuccess').style.display='block';},700);
+  const name=document.getElementById('rName').value.trim();
+  const wa=document.getElementById('rWa').value.trim();
+  const subj=document.getElementById('rSubject').value;
+  const city=document.getElementById('rCity').value;
+  const note=document.getElementById('rNote').value.trim();
+  const text=`Здравствуйте! Хочу найти репетитора через Ustazium.%0A%0AИмя: ${name}%0AМой WhatsApp: ${wa}%0AПредмет: ${subj}%0AГород: ${city}${note?`%0AЗадача: ${note}`:''}`;
+  document.getElementById('fsuccess').style.display='block';
+  window.open(`https://wa.me/${PLATFORM_WA}?text=${text}`,'_blank');
 }
 
 // modal
@@ -863,13 +841,23 @@ function openModal(){document.getElementById('overlay').classList.add('active');
 function closeModal(){document.getElementById('overlay').classList.remove('active');document.body.style.overflow=''}
 function submitTutor(e){
   e.preventDefault();
-  setTimeout(()=>{
-    document.getElementById('mFormView').style.display='none';
-    document.getElementById('mSuccess').style.display='block';
-  },500);
+  const name=document.getElementById('tName').value.trim();
+  const wa=document.getElementById('tWa').value.trim();
+  const subj=document.getElementById('tSubj').value.trim();
+  const price=document.getElementById('tPrice').value.trim();
+  const city=document.getElementById('tCity').value;
+  const uni=document.getElementById('tUni').value.trim();
+  const about=document.getElementById('tAbout').value.trim();
+  const text=`Здравствуйте! Хочу стать репетитором на Ustazium.%0A%0AИмя: ${name}%0AWhatsApp: ${wa}%0AПредметы: ${subj}%0AЦена за урок: ${price}%0AГород: ${city}%0AВУЗ/специальность: ${uni}${about?`%0AО себе: ${about}`:''}`;
+  document.getElementById('mFormView').style.display='none';
+  document.getElementById('mSuccess').style.display='block';
+  window.open(`https://wa.me/${PLATFORM_WA}?text=${text}`,'_blank');
 }
 
 renderTutors(TUTORS);
+// wire up footer instagram link
+document.getElementById('igLink').href=INSTAGRAM_URL;
+
 </script>
 </body>
 </html>
